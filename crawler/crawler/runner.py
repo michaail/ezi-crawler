@@ -5,7 +5,7 @@ try:
     [
       'scrapy',
       'crawl',
-      'basic_crawler',
+      'test_crawler',
       '-o',
       'out.json',
     ]
