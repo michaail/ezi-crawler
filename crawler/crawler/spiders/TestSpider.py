@@ -31,10 +31,10 @@ class MySpider(Spider):
     links = hxs.xpath('//a/@href').extract()
     # link_validator = re.compile("^(?:http|https):\/\/(?:[\w\.\-\+]+:{0,1}[\w\.\-\+]*@)?(?:[a-z0-9\-\.]+)(?::[0-9]+)?(?:\/|\/(?:[\w#!:\.\?\+=&amp;%@!\-\/\(\)]+)|\?(?:[\w#!:\.\?\+=&amp;%@!\-\/\(\)]+))?$")
 
-    if page in data:
+    if url in data:
       pass
     else:
-      data[page] = links
+      data[url] = links
 
     for to_process in links:
       link = to_process
@@ -48,3 +48,5 @@ class MySpider(Spider):
       
   def closed(self, reason):
     print('closed')
+    with open("test/" + "result.json", 'w') as f:
+      json.dump(data, f)
